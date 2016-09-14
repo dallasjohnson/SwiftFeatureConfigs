@@ -1,0 +1,16 @@
+PODS:
+  - SwiftFeatureConfigs (0.1.0)
+
+DEPENDENCIES:
+  - SwiftFeatureConfigs (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftFeatureConfigs:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftFeatureConfigs: 8b38faffe6841669e4b4846dafa2082c3bd404a6
+
+PODFILE CHECKSUM: da80df88dc725af1f3a27ad9a8c5f4f2125bfa94
+
+COCOAPODS: 1.0.1

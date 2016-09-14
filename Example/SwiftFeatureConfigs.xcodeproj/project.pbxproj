@@ -13,6 +13,12 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		8522EED41D87E98A00B42C4C /* FeatureConfigsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522EED21D87E98A00B42C4C /* FeatureConfigsTests.swift */; };
+		8522EED51D87E98A00B42C4C /* FeatureConfigsTestsWithOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522EED31D87E98A00B42C4C /* FeatureConfigsTestsWithOverride.swift */; };
+		8522EED81D87E9EC00B42C4C /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDD48F1D8694D5002585D2 /* Features.swift */; };
+		8522EEDA1D87EC7700B42C4C /* FeaturesOverride.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8522EED91D87EC7700B42C4C /* FeaturesOverride.plist */; };
+		8522EEDB1D87EF8700B42C4C /* FeaturesOverride.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8522EED91D87EC7700B42C4C /* FeaturesOverride.plist */; };
+		85BDD4901D8694D5002585D2 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDD48F1D8694D5002585D2 /* Features.swift */; };
 		DF5B09800953DFA6C029F033 /* Pods_SwiftFeatureConfigs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98644CA9E20A2131DFAE761 /* Pods_SwiftFeatureConfigs_Example.framework */; };
 		FB63274256F53F626DBFBD56 /* Pods_SwiftFeatureConfigs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6E64DDBE38F8E463DF8EDA /* Pods_SwiftFeatureConfigs_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -28,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2817C0984D6016A197C40002 /* SwiftFeatureConfigs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftFeatureConfigs.podspec; path = ../SwiftFeatureConfigs.podspec; sourceTree = "<group>"; };
+		2817C0984D6016A197C40002 /* SwiftFeatureConfigs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftFeatureConfigs.podspec; path = ../SwiftFeatureConfigs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* SwiftFeatureConfigs_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFeatureConfigs_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +46,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		652B527FF75EE38714E406A8 /* Pods-SwiftFeatureConfigs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFeatureConfigs_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFeatureConfigs_Example/Pods-SwiftFeatureConfigs_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8522EED21D87E98A00B42C4C /* FeatureConfigsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureConfigsTests.swift; sourceTree = "<group>"; };
+		8522EED31D87E98A00B42C4C /* FeatureConfigsTestsWithOverride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureConfigsTestsWithOverride.swift; sourceTree = "<group>"; };
+		8522EED91D87EC7700B42C4C /* FeaturesOverride.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FeaturesOverride.plist; path = ../Tests/FeaturesOverride.plist; sourceTree = "<group>"; };
+		85BDD48F1D8694D5002585D2 /* Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
 		8DC9F1711DF9E9E0DB1C633E /* Pods-SwiftFeatureConfigs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFeatureConfigs_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFeatureConfigs_Tests/Pods-SwiftFeatureConfigs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A6DDC913A23724183C0CDA07 /* Pods-SwiftFeatureConfigs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFeatureConfigs_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFeatureConfigs_Tests/Pods-SwiftFeatureConfigs_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ACF63D784BEF4B64E0C06233 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -115,6 +125,8 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				85BDD48F1D8694D5002585D2 /* Features.swift */,
+				8522EED91D87EC7700B42C4C /* FeaturesOverride.plist */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -135,6 +147,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8522EED21D87E98A00B42C4C /* FeatureConfigsTests.swift */,
+				8522EED31D87E98A00B42C4C /* FeatureConfigsTestsWithOverride.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -249,6 +263,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				8522EEDB1D87EF8700B42C4C /* FeaturesOverride.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8522EEDA1D87EC7700B42C4C /* FeaturesOverride.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85BDD4901D8694D5002585D2 /* Features.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
@@ -368,7 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8522EED41D87E98A00B42C4C /* FeatureConfigsTests.swift in Sources */,
+				8522EED51D87E98A00B42C4C /* FeatureConfigsTestsWithOverride.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				8522EED81D87E9EC00B42C4C /* Features.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +442,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -439,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -467,6 +488,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -477,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -514,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DC9F1711DF9E9E0DB1C633E /* Pods-SwiftFeatureConfigs_Tests.debug.xcconfig */;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -526,6 +549,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFeatureConfigs_Example.app/SwiftFeatureConfigs_Example";
 			};
 			name = Debug;
 		};
@@ -533,6 +557,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6DDC913A23724183C0CDA07 /* Pods-SwiftFeatureConfigs_Tests.release.xcconfig */;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -541,6 +566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftFeatureConfigs_Example.app/SwiftFeatureConfigs_Example";
 			};
 			name = Release;
 		};

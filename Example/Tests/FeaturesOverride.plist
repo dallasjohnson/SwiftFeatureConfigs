@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>boolFeature</key>
+	<true/>
+	<key>intFeature</key>
+	<integer>456</integer>
+	<key>doubleFeature</key>
+	<real>987.45</real>
+	<key>stringFeature</key>
+	<string>kjshdkjhsdf</string>
+</dict>
+</plist>

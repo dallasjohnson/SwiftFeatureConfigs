@@ -1,0 +1,6 @@
+framework module SwiftFeatureConfigs {
+  umbrella header "SwiftFeatureConfigs-umbrella.h"
+
+  export *
+  module * { export * }
+}
