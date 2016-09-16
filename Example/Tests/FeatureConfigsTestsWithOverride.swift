@@ -13,58 +13,50 @@ import SwiftFeatureConfigs
 /// These tests are similar to the FeatureConfigTests but this target has a plist file included to enable testing the plist overrides.
 class FeatureConfigsTestsWithOverride: XCTestCase {
 
-    override static func setUp() {
-        super.setUp()
-        Features.overrideFileURL = NSBundle(forClass: self).URLForResource("FeaturesOverride", withExtension: "plist")
-    }
+    var features: Features!
 
     override func setUp() {
         super.setUp()
-        Features.loadInMemoryFeatures(["someOtherFeature" : 123])
-        Features.clearPersistedConfigs()
+        let overrideURL = NSBundle(forClass: self.dynamicType).URLForResource("FeaturesOverride", withExtension: "plist")
+        self.features = Features(featuresLocalFileURL: overrideURL)
+        features.loadInMemoryFeatures(["someOtherFeature" : 123])
+        features.clearPersistedConfigs()
     }
 
     override func tearDown() {
         super.tearDown()
-        Features.clearInMemoryConfigs()
-        Features.clearPersistedConfigs()
+        features.clearInMemoryConfigs()
+        features.clearPersistedConfigs()
     }
 
     func testBoolFeatureSet() {
-        let result = Features.boolFeature
+        let result = features.boolFeature
         XCTAssertTrue(result)
     }
 
     func testStringFeatureSet() {
-        let result = Features.stringFeature
+        let result = features.stringFeature
         XCTAssertEqual(result, "kjshdkjhsdf")
     }
 
     func testIntFeatureSet() {
-        let result = Features.intFeature
+        let result = features.intFeature
         XCTAssertEqual(result, 456)
     }
 
     func testDoubleFeatureSet() {
-        let result = Features.doubleFeature
+        let result = features.doubleFeature
         XCTAssertEqual(result, 987.45)
     }
 
     func testFeatureInMemoryWithoutOverride() {
-        let result = Features.someOtherFeature
+        let result = features.someOtherFeature
         XCTAssertEqual(result, 123)
-    }
-
-    func testNestedFeatures() {
-        SubFeature.loadInMemoryFeatures(["nestedBoolFeature": true])
-        SubFeature.persist()
-        let result = Features.subFeature.boolFeature
-        XCTAssertTrue(result)
     }
 }
 
 extension Features {
-    static var someOtherFeature: Int {
+     var someOtherFeature: Int {
         return setting(defaultValue: 4567)
     }
 }
