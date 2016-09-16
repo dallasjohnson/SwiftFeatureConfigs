@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension NSURL {
+
+    var toConfigs: [String: AnyObject]? {
+        return  NSDictionary(contentsOfURL: self) as? [String: AnyObject]
+    }
+}
+
 public class SwiftFeatureConfigs: NSObject {
 
     private var defaultsKey: String {
@@ -16,29 +23,17 @@ public class SwiftFeatureConfigs: NSObject {
 
     public static var featuresLocalFileURL: NSURL?
 
+    private var overrideFeatureConfigs: [String: AnyObject]
     private var inMemoryFeatureConfigs: [String: AnyObject]?
-
-    private var overrideFeatureConfigs: [String: AnyObject] = {
-        if let url = featuresLocalFileURL, let configs = NSDictionary(contentsOfURL: url) as? [String: AnyObject] {
-            return configs
-        } else {
-            return [:]
-        }
-    }()
-
     private var persistedFeatureConfigs: [String: AnyObject]? {
         return NSUserDefaults.standardUserDefaults().dictionaryForKey(self.defaultsKey)
     }
 
-    private func urlToConfigs(url: NSURL?) -> [String: AnyObject]? {
-        return url.flatMap { NSDictionary(contentsOfURL: $0) as? [String: AnyObject] }
-    }
-
     public init(featuresLocalFileURL: NSURL? = nil) {
-        super.init()
-        overrideFeatureConfigs = urlToConfigs(featuresLocalFileURL) ??
-            urlToConfigs(NSBundle(forClass:self.dynamicType).URLForResource("Features", withExtension:"plist")) ??
+        overrideFeatureConfigs = featuresLocalFileURL?.toConfigs ??
+            NSBundle(forClass: SwiftFeatureConfigs.self).URLForResource("Features", withExtension:"plist")?.toConfigs ??
             [:]
+        super.init()
     }
 
     /**
