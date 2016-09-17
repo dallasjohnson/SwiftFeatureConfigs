@@ -226,10 +226,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CT4HAP86SY;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = CT4HAP86SY;
 						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -509,7 +511,9 @@
 			baseConfigurationReference = 652B527FF75EE38714E406A8 /* Pods-SwiftFeatureConfigs_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CT4HAP86SY;
 				INFOPLIST_FILE = SwiftFeatureConfigs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -523,7 +527,9 @@
 			baseConfigurationReference = F9554528831185DFFC11749F /* Pods-SwiftFeatureConfigs_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CT4HAP86SY;
 				INFOPLIST_FILE = SwiftFeatureConfigs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -536,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DC9F1711DF9E9E0DB1C633E /* Pods-SwiftFeatureConfigs_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CT4HAP86SY;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -558,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6DDC913A23724183C0CDA07 /* Pods-SwiftFeatureConfigs_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = CT4HAP86SY;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
