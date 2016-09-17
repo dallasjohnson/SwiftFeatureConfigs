@@ -1,6 +1,6 @@
 # SwiftFeatureConfigs
 
-[![CI Status](http://img.shields.io/travis/Dallas Johnson/SwiftFeatureConfigs.svg?style=flat)](https://travis-ci.org/dallasjohnson/SwiftFeatureConfigs)
+[![Build Status](https://travis-ci.org/dallasjohnson/SwiftFeatureConfigs.svg?branch=master)](https://travis-ci.org/dallasjohnson/SwiftFeatureConfigs)
 [![Version](https://img.shields.io/cocoapods/v/SwiftFeatureConfigs.svg?style=flat)](http://cocoapods.org/pods/SwiftFeatureConfigs)
 [![License](https://img.shields.io/cocoapods/l/SwiftFeatureConfigs.svg?style=flat)](http://cocoapods.org/pods/SwiftFeatureConfigs)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftFeatureConfigs.svg?style=flat)](http://cocoapods.org/pods/SwiftFeatureConfigs)
