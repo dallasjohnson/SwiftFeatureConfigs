@@ -28,7 +28,7 @@ class FeatureConfigsTests: XCTestCase {
     }
 
     func testBoolFeatureSet() {
-        features.loadInMemoryFeatures(["boolFeature": false])
+        features.loadInMemoryFeatures(["boolFeature": false as AnyObject])
         let result = features.boolFeature
         XCTAssertFalse(result)
     }
@@ -39,7 +39,7 @@ class FeatureConfigsTests: XCTestCase {
     }
 
     func testStringFeatureSet() {
-        features.loadInMemoryFeatures(["stringFeature": "set message"])
+        features.loadInMemoryFeatures(["stringFeature": "set message" as AnyObject])
 
         let result = features.stringFeature
         XCTAssertEqual(result, "set message")
@@ -51,7 +51,7 @@ class FeatureConfigsTests: XCTestCase {
     }
 
     func testIntFeatureSet() {
-        features.loadInMemoryFeatures(["intFeature": 23])
+        features.loadInMemoryFeatures(["intFeature": 23 as AnyObject])
 
         let result = features.intFeature
         XCTAssertEqual(result, 23)
@@ -63,7 +63,7 @@ class FeatureConfigsTests: XCTestCase {
     }
 
     func testDoubleFeatureSet() {
-        features.loadInMemoryFeatures(["doubleFeature": 29.5])
+        features.loadInMemoryFeatures(["doubleFeature": 29.5 as AnyObject])
 
         let result = features.doubleFeature
         XCTAssertEqual(result, 29.5)
@@ -76,18 +76,18 @@ class FeatureConfigsTests: XCTestCase {
 
     func testLoadAndPersist() {
         //Seed and save in NSUserDefaults
-        features.loadInMemoryFeatures(["stringFeature": "set message"])
+        features.loadInMemoryFeatures(["stringFeature": "set message" as AnyObject])
         features.persist()
 
-        let result = NSUserDefaults.standardUserDefaults()
-            .dictionaryForKey("Features_defaults_key_")!["stringFeature"] as! String
+        let result = UserDefaults.standard
+            .dictionary(forKey: "Features_defaults_key_")!["stringFeature"] as! String
 
         XCTAssertEqual(result, "set message")
     }
 
     func testClearLoaded() {
         //precondition
-        features.loadInMemoryFeatures(["stringFeature": "set message"])
+        features.loadInMemoryFeatures(["stringFeature": "set message" as AnyObject])
         let welcomeMessage = features.stringFeature
         XCTAssertEqual(welcomeMessage, "set message")
 
@@ -101,7 +101,7 @@ class FeatureConfigsTests: XCTestCase {
 
     func testClearPersisted() {
         //precondition
-        features.loadInMemoryFeatures(["stringFeature": "set message"])
+        features.loadInMemoryFeatures(["stringFeature": "set message" as AnyObject])
         features.persist()
         features.clearInMemoryConfigs() // Clear loaded because it should pull from the defaults
         let welcomeMessage = features.stringFeature

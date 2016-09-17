@@ -8,30 +8,30 @@
 
 import Foundation
 
-extension NSURL {
+extension URL {
 
     var toConfigs: [String: AnyObject]? {
-        return  NSDictionary(contentsOfURL: self) as? [String: AnyObject]
+        return  NSDictionary(contentsOf: self) as? [String: AnyObject]
     }
 }
 
-public class SwiftFeatureConfigs: NSObject {
+open class SwiftFeatureConfigs: NSObject {
 
-    private var defaultsKey: String {
-        return "\(self.dynamicType)_defaults_key_"
+    fileprivate var defaultsKey: String {
+        return "\(type(of: self))_defaults_key_"
     }
 
-    public static var featuresLocalFileURL: NSURL?
+    open static var featuresLocalFileURL: URL?
 
-    private var overrideFeatureConfigs: [String: AnyObject]
-    private var inMemoryFeatureConfigs: [String: AnyObject]?
-    private var persistedFeatureConfigs: [String: AnyObject]? {
-        return NSUserDefaults.standardUserDefaults().dictionaryForKey(self.defaultsKey)
+    fileprivate var overrideFeatureConfigs: [String: AnyObject]
+    fileprivate var inMemoryFeatureConfigs: [String: AnyObject]?
+    fileprivate var persistedFeatureConfigs: [String: AnyObject]? {
+        return UserDefaults.standard.dictionary(forKey: self.defaultsKey) as [String : AnyObject]?
     }
 
-    public init(featuresLocalFileURL: NSURL? = nil) {
+    public init(featuresLocalFileURL: URL? = nil) {
         overrideFeatureConfigs = featuresLocalFileURL?.toConfigs ??
-            NSBundle(forClass: SwiftFeatureConfigs.self).URLForResource("Features", withExtension:"plist")?.toConfigs ??
+            Bundle(for: SwiftFeatureConfigs.self).url(forResource: "Features", withExtension:"plist")?.toConfigs ??
             [:]
         super.init()
     }
@@ -59,7 +59,7 @@ public class SwiftFeatureConfigs: NSObject {
      3. Persisted configs saved in the NSUserDefaults under key derived from the current class "'ClassName'__defaults_key_.key"
      4. The default value for the given setting
      */
-    public func setting<T>(key: String = #function, defaultValue: T) -> T {
+    open func setting<T>(_ key: String = #function, defaultValue: T) -> T {
         return overrideFeatureConfigs[key] as? T ??
             inMemoryFeatureConfigs?[key] as? T ??
             persistedFeatureConfigs?[key] as? T ??
@@ -71,26 +71,26 @@ public class SwiftFeatureConfigs: NSObject {
      Loads a dictionary of feature configs into memory. This would be used to load configs based on app or user settings retrieved from a network call.
      - parameter rawConfigs: dictionary of features
      */
-    public func loadInMemoryFeatures(configs: [String: AnyObject]) {
+    open func loadInMemoryFeatures(_ configs: [String: AnyObject]) {
         inMemoryFeatureConfigs = configs
     }
     /**
      Clears the loaded in memory configs.
      */
-    public func clearInMemoryConfigs() {
+    open func clearInMemoryConfigs() {
         inMemoryFeatureConfigs = nil
     }
     /**
      Persist the in memory feature configs for later offline use. These will be saved in the NSUserDefaults using in a dictionary under the key "'ClassName'_defaults_key_"
      */
-    public func persist() {
+    open func persist() {
         guard let features = inMemoryFeatureConfigs else { return print("No features loaded yet to persist") }
-        NSUserDefaults.standardUserDefaults().setObject(features, forKey: self.defaultsKey)
+        UserDefaults.standard.set(features, forKey: self.defaultsKey)
     }
     /**
      Deletes the persisted configs from the NSUserDefaults
      */
-    public func clearPersistedConfigs() {
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: self.defaultsKey)
+    open func clearPersistedConfigs() {
+        UserDefaults.standard.set(nil, forKey: self.defaultsKey)
     }
 }
