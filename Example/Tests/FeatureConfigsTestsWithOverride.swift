@@ -13,50 +13,54 @@ import SwiftFeatureConfigs
 /// These tests are similar to the FeatureConfigTests but this target has a plist file included to enable testing the plist overrides.
 class FeatureConfigsTestsWithOverride: XCTestCase {
 
-    var features: Features!
+    var testFeaturesWithOverride: TestFeatures!
 
     override func setUp() {
         super.setUp()
         let overrideURL = Bundle(for: type(of: self)).url(forResource: "FeaturesOverride", withExtension: "plist")
-        self.features = Features(featuresLocalFileURL: overrideURL)
-        features.loadInMemoryFeatures(["someOtherFeature" : 123 as AnyObject])
-        features.clearPersistedConfigs()
+        self.testFeaturesWithOverride = TestFeatures(featuresLocalFileURL: overrideURL)
+        
+        let otherURL = Bundle(for: type(of: self)).url(forResource: "FeaturesOverride", withExtension: "plist")
+        _ = OtherTestFeatures(featuresLocalFileURL: otherURL)
+        
+        testFeaturesWithOverride.loadInMemoryFeatures(["someOtherFeature" : 123])
+        testFeaturesWithOverride.clearPersistedConfigs()
     }
 
     override func tearDown() {
         super.tearDown()
-        features.clearInMemoryConfigs()
-        features.clearPersistedConfigs()
+        testFeaturesWithOverride.clearInMemoryConfigs()
+        testFeaturesWithOverride.clearPersistedConfigs()
     }
 
     func testBoolFeatureSet() {
-        let result = features.boolFeature
+        let result = testFeaturesWithOverride.boolFeature
         XCTAssertTrue(result)
     }
 
     func testStringFeatureSet() {
-        let result = features.stringFeature
+        let result = testFeaturesWithOverride.stringFeature
         XCTAssertEqual(result, "kjshdkjhsdf")
     }
 
     func testIntFeatureSet() {
-        let result = features.intFeature
+        let result = testFeaturesWithOverride.intFeature
         XCTAssertEqual(result, 456)
     }
 
     func testDoubleFeatureSet() {
-        let result = features.doubleFeature
+        let result = testFeaturesWithOverride.doubleFeature
         XCTAssertEqual(result, 987.45)
     }
 
     func testFeatureInMemoryWithoutOverride() {
-        let result = features.someOtherFeature
+        let result = testFeaturesWithOverride.someOtherFeature
         XCTAssertEqual(result, 123)
     }
 }
 
-extension Features {
+extension TestFeatures {
      var someOtherFeature: Int {
-        return setting(defaultValue: 4567)
+        return config(defaultValue: 4567)
     }
 }
