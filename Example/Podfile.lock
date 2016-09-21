@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftFeatureConfigs: 8b38faffe6841669e4b4846dafa2082c3bd404a6
+  SwiftFeatureConfigs: 6f2e53b1c6345bc71cd2a2bad55bf709f2a35d57
 
 PODFILE CHECKSUM: da80df88dc725af1f3a27ad9a8c5f4f2125bfa94
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2
