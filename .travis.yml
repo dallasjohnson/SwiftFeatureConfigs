@@ -4,6 +4,13 @@
 
 osx_image: xcode8
 language: objective-c
+branches:
+  only:
+    - master
+env:
+  global:
+    - IOS_SDK="iphonesimulator9.3"
+    - IOS9_DESTINATION="OS=9.3,name=iPhone 6"
 # cache: cocoapods
 # podfile: Example/Podfile
 # before_install:

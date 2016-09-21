@@ -20,15 +20,15 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   This cocoapod provides feature configs to swift and Objective C projects that is type-safe, configurable, simple enough to reason about and powerful enough to adapt to your needs.
   
-  Feature configs are controlled via 4 levels listed in order in that will take priority first.
+  Feature configs are controlled via 4 levels of control listed in the order that will take priority first.
   
-  local plist file stored in the app's NSBundle. This would be most appropriate for a developer working on and individual feature in their own app sandbox or for a QA engineer testing a silently deployed feature for possible side effect regression bugs before releasing a feature to the public.
+   * Local plist file stored in the app's NSBundle. This would be most appropriate for a developer working on and individual feature in their own app sandbox or for a QA engineer testing a silently deployed feature for possible side effect regression bugs before releasing a feature to the public.
   
-  In memory store loaded This may be configured at app launch time or after a user logs in to provides run time specific features or AB testing. The in memory settings would be populated with a simple dictionary detailing the feature configs that should be updated. These can then be persisted using persistInMemorySettings for future offline use into the NSUserDefaults.
+  * In memory store loaded This may be configured at app launch time or after a user logs in to provides run time specific features or AB testing. The in memory settings would be populated with a simple dictionary detailing the feature configs that should be updated. These can then be persisted using persistInMemorySettings for future offline use into the UserDefaults.
   
-  NSUserDefaults for on device persistant storage. The network will not always be available but your app may have offline features that should still work as they did for the user's last run.
+  * UserDefaults for on device persistant storage. The network will not always be available but your app may have offline features that should still work as they did for the user's last run.
   
-  Feature config's default When the app is first launched each specified feature config should have an initial value to ensure if none of the above have previously been set there is still a sensible default so the app will not (should not) crash.
+  * Feature config's default When the app is first launched each specified feature config should have an initial value to ensure if none of the above have previously been set there is still a sensible default so the app will not (should not) crash.
 DESC
 
   s.homepage         = 'https://github.com/dallasjohnson/SwiftFeatureConfigs'
