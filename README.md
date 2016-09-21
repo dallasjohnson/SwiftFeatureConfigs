@@ -16,13 +16,13 @@ Other solutions I have seen require "stringly typed" toggles with server coordin
 
   Feature configs are controlled via 4 levels of control listed in the order that will take priority first.
   
-   1. **Override Feature Configs** via a local plist file stored in the app's Bundle. This would be most appropriate for a developer working on an individual feature in their own app sandbox or for a QA engineer testing a silently deployed feature for possible side effect regression bugs before releasing a feature to the public. The plist file should ***only*** be included in development builds or used by testers. 
+1. **Override Feature Configs** via a local plist file stored in the app's Bundle. This would be most appropriate for a developer working on an individual feature in their own app sandbox or for a QA engineer testing a silently deployed feature for possible side effect regression bugs before releasing a feature to the public. The plist file should ***only*** be included in development builds or used by testers. 
   
-  1. **In Memory Features Configs** These may be configured at app launch time or when a user logs in to provides run time specific features or A/B testing. The in memory settings would be populated with a dictionary detailing the feature configs that should be updated with keys matching the name of the featureConfig `eg. callToActionPurchaseText` These can then be persisted using `persistInMemorySettings()` for future offline use into the UserDefaults.
+2. **In Memory Features Configs** These may be configured at app launch time or when a user logs in to provides run time specific features or A/B testing. The in memory settings would be populated with a dictionary detailing the feature configs that should be updated with keys matching the name of the featureConfig `eg. callToActionPurchaseText` These can then be persisted using `persistInMemorySettings()` for future offline use into the UserDefaults.
   
-  1. **Persisted Feature Configs** using UserDefaults for on device persistant storage. The network will not always be available but your app may have offline features that should still work as they did for the user's last run.
+3. **Persisted Feature Configs** using UserDefaults for on device persistant storage. The network will not always be available but your app may have offline features that should still work as they did for the user's last run.
   
-  1. **Default Setting** Each feature config should have a default value when it is declared. This should have an initial value to ensure that if none of the above have previously been set there is still a sensible default so the app will still behave safely.
+4. **Default Setting** Each feature config should have a default value when it is declared. This should have an initial value to ensure that if none of the above have previously been set there is still a sensible default so the app will still behave safely.
 
 ##Setup
 1. Create a subclass from `SwiftFeatureConfigs`. This is an `NSObject` to enable use with Objective-C codebases as well as Swift. 
