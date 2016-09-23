@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftFeatureConfigs'
-  s.version          = '0.1.0'
+  s.version          = '1.0.1'
   s.summary          = 'Light weight and type-safe feature toggling for Swift/Objective-c'
 
 # This description is used to generate tags and improve search results.

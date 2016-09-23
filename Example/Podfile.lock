@@ -1,5 +1,5 @@
 PODS:
-  - SwiftFeatureConfigs (0.1.0)
+  - SwiftFeatureConfigs (1.0.1)
 
 DEPENDENCIES:
   - SwiftFeatureConfigs (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftFeatureConfigs: 620d5638c62108ab8eb6c6a9bc9361f7f4a5c862
+  SwiftFeatureConfigs: 6c094fda08e7308d601da3e13c202b167e570114
 
 PODFILE CHECKSUM: da80df88dc725af1f3a27ad9a8c5f4f2125bfa94
 

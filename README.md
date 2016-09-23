@@ -107,7 +107,7 @@ The persisted configs can be cleared with:
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
-Swift 3+ with Objective-C on iOS.
+Swift 2.3 or Objective-C on iOS.
 
 ## Installation
 

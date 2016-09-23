@@ -80,7 +80,7 @@ public class SwiftFeatureConfigs: NSObject {
      3. Persisted configs saved in the NSUserDefaults under key derived from the current class "'ClassName'__defaults_key_.key"
      4. The default value for the given config
      */
-    public func config<T>(_ key: String = #function, defaultValue: T, persistableOnDevice: Bool = true) -> T {
+    public func config<T>(key: String = #function, defaultValue: T, persistableOnDevice: Bool = true) -> T {
         let config: FeatureConfig<T>
         if let s = configsCollection[key] as? FeatureConfig<T> {
             config = s
@@ -105,7 +105,7 @@ public class SwiftFeatureConfigs: NSObject {
      Loads a dictionary of feature configs into memory. This would be used to load configs based on app or user configs retrieved from a network call.
      - parameter rawConfigs: dictionary of features
      */
-    public func loadInMemoryFeatures(_ configs: ConfigsValueCollection) {
+   public func loadInMemoryFeatures(configs: ConfigsValueCollection) {
         inMemoryFeatureConfigs = configs
     }
     /**
