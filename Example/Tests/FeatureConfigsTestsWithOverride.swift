@@ -17,10 +17,10 @@ class FeatureConfigsTestsWithOverride: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let overrideURL = Bundle(for: type(of: self)).url(forResource: "FeaturesOverride", withExtension: "plist")
+        let overrideURL = NSBundle(forClass: self.dynamicType).URLForResource("FeaturesOverride", withExtension: "plist")
         self.testFeaturesWithOverride = TestFeatures(featuresLocalFileURL: overrideURL)
         
-        let otherURL = Bundle(for: type(of: self)).url(forResource: "FeaturesOverride", withExtension: "plist")
+        let otherURL = NSBundle(forClass: self.dynamicType).URLForResource("FeaturesOverride", withExtension: "plist")
         _ = OtherTestFeatures(featuresLocalFileURL: otherURL)
         
         testFeaturesWithOverride.loadInMemoryFeatures(["someOtherFeature" : 123])

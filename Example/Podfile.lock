@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftFeatureConfigs: 6f2e53b1c6345bc71cd2a2bad55bf709f2a35d57
+  SwiftFeatureConfigs: 620d5638c62108ab8eb6c6a9bc9361f7f4a5c862
 
 PODFILE CHECKSUM: da80df88dc725af1f3a27ad9a8c5f4f2125bfa94
 

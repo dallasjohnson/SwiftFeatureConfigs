@@ -79,13 +79,12 @@ class FeatureConfigsTests: XCTestCase {
         testFeatures.loadInMemoryFeatures(["stringFeature": "set message", "stringFeaturePreventPersisting": "setNonPersistingMessage"])
         testFeatures.persist()
 
-        let persistedResult = UserDefaults.standard
-            .dictionary(forKey: "TestFeatures_defaults_key_")!["stringFeature"] as! String
+        let persistedResult = NSUserDefaults.standardUserDefaults().dictionaryForKey("TestFeatures_defaults_key_")!["stringFeature"] as! String
         
         XCTAssertEqual(persistedResult, "set message")
         
-        let nonPersistedResult = UserDefaults.standard
-            .dictionary(forKey: "TestFeatures_defaults_key_")!["stringFeaturePreventPersisting"]
+        let nonPersistedResult = NSUserDefaults.standardUserDefaults()
+            .dictionaryForKey("TestFeatures_defaults_key_")!["stringFeaturePreventPersisting"]
         
         XCTAssertNil(nonPersistedResult)
     }

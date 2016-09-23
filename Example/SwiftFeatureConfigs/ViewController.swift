@@ -20,18 +20,18 @@ class ViewController: UIViewController {
     
     func refreshView() {
         self.title = ExampleFeatureConfigs.sharedInstance.mainViewTitle
-        showDetailsButton.isEnabled = ExampleFeatureConfigs.sharedInstance.detailsViewEnabled
+        showDetailsButton.enabled = ExampleFeatureConfigs.sharedInstance.detailsViewEnabled
         self.collectionView.reloadData()
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ExampleFeatureConfigs.sharedInstance.numberOfCellsToDisplay
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCellIdentifier", for: indexPath)
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCellWithReuseIdentifier("collectionViewCellIdentifier", forIndexPath: indexPath)
     }
 }
 
@@ -40,7 +40,7 @@ extension ViewController {
     //This function will have no effect while the ExampleFeatureConfigs.plist is added to the target because it will overide the other settings.
     // This is ideal when developing features to ensure the developer can control the configs.
     @IBAction func injectInMemoryConfigs() {
-        let json: [String : Any] = ["detailsViewEnabled" : false,
+        let json: [String : AnyObject] = ["detailsViewEnabled" : false,
                                     "numberOfCellsToDisplay": 52,
                                     "mainViewTitle": "JSON Injected title"]
         
