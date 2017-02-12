@@ -33,8 +33,8 @@ protocol ConfigCollectableType {
     var persistableOnDevice: Bool { get }
 }
 
+/// A Simple struct to hold a config including a key to access it's value, default value and whether it should be persisted.
 struct FeatureConfig<T>: ConfigCollectableType {
-    let f = Array<Int>()
     let key: String
     let defaultValue: T
     let persistableOnDevice: Bool
@@ -80,7 +80,6 @@ open class SwiftFeatureConfigs: NSObject {
      var someRandomFeature: Bool {
      return config(defaultValue: false, persistableOnDevice: false)
      }
-     
      ````
      
      - parameter key:          string used as a key in the override configs, in memory configs and user defaults persisted configs.
@@ -98,12 +97,12 @@ open class SwiftFeatureConfigs: NSObject {
      */
     public func config<T>(_ key: String = #function, defaultValue: T, persistableOnDevice: Bool = true) -> T {
         let config: FeatureConfig<T>
-        if let s = configsCollection[key] as? FeatureConfig<T> {
-            config = s
+        if let foundConfig = configsCollection[key] as? FeatureConfig<T> {
+            config = foundConfig
         } else {
-            let s = FeatureConfig(key: key, defaultValue: defaultValue, persistableOnDevice: persistableOnDevice)
-            configsCollection[key] = s
-            config = s
+            let lazilyCreatedConfig = FeatureConfig(key: key, defaultValue: defaultValue, persistableOnDevice: persistableOnDevice)
+            configsCollection[key] = lazilyCreatedConfig
+            config = lazilyCreatedConfig
         }
         return getValue(config: config)
     }
@@ -118,22 +117,30 @@ open class SwiftFeatureConfigs: NSObject {
 
     // MARK: - Utility Methods
     /**
-     Loads a dictionary of feature configs into memory. This would be used to load configs based on app or user configs retrieved from a network call.
+     Loads a dictionary of feature configs into memory. This would be used to inject configs based on app or user configs retrieved from a network call.
+     Pass in a JSON object such as:
+     
+          { 
+          "MySpecialFeatureIsEnabled": true,
+          "usernameValidationRegex": "[a-zA-Z.]{2,}@[a-zA-Z.]{2,}"
+          }
+and they will mapped feature configs with the same keys
      - parameter rawConfigs: dictionary of features
      */
     public func loadInMemoryFeatures(_ configs: ConfigsValueCollection) {
         inMemoryFeatureConfigs = configs
     }
+    
     /**
      Clears the loaded in memory configs
      */
     public func clearInMemoryConfigs() {
         inMemoryFeatureConfigs = nil
     }
+    
     /**
-     Persist the in memory feature configs for later offline use. These will be saved in the NSUserDefaults using in a dictionary under the key "'ClassName'_defaults_key_"
+     Persist the in memory feature configs for later offline use. These will be saved in the UserDefaults using in a dictionary under the key "'ClassName'_defaults_key_"
      */
-
     public func persist() {
         guard var features = inMemoryFeatureConfigs else { return print("No features loaded yet to persist") }
 
@@ -147,6 +154,7 @@ open class SwiftFeatureConfigs: NSObject {
         }
         UserDefaults.standard.set(features, forKey: self.featureConfigsUserDefaultsKey)
     }
+    
     /**
      Deletes the persisted configs from the NSUserDefaults
      */
