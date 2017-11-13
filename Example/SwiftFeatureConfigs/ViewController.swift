@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     func refreshView() {
         self.title = ExampleFeatureConfigs.sharedInstance.mainViewTitle
+        self.navigationItem.hidesBackButton = MyFeatures.shared.isaEnabled
         showDetailsButton.isEnabled = ExampleFeatureConfigs.sharedInstance.detailsViewEnabled
         self.collectionView.reloadData()
     }

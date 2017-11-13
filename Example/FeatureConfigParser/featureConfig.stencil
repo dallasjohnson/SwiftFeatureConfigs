@@ -1,0 +1,13 @@
+
+import Foundation
+import SwiftFeatureConfigs
+
+class {{configCollectionName|default:"FeatureConfigs"}}: SwiftFeatureConfigs {
+
+  static var shared: {{configCollectionName}} = {{configCollectionName}}()
+{% for feature in features %}
+{% if not feature.doc == nil %}  ///{{feature.doc}}{% endif %}
+  var {{feature.name }}: {{feature.type}} {
+    return config({% if not feature.key == nil %}"{{feature.key}}", {% endif %}defaultValue: {% if feature.type == "String" %}"{% endif %}{{feature.default}}{% if feature.type == "String" %}"{% endif %})
+  }{% endfor %}
+}

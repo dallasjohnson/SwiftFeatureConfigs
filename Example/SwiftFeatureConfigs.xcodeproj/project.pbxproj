@@ -18,6 +18,8 @@
 		857A301C1D902BB100AF33FA /* ExampleFeatureConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A301B1D902BB100AF33FA /* ExampleFeatureConfigs.swift */; };
 		858FE6B91D9091B300F915DC /* FeatureConfigsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8522EED21D87E98A00B42C4C /* FeatureConfigsTests.swift */; };
 		858FE6BA1D9091D900F915DC /* TestFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858FE6B71D9090BC00F915DC /* TestFeatures.swift */; };
+		9858790B1FB9C2070025CF86 /* FeatureConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BDC36E1FB9B93A0081D78D /* FeatureConfigs.swift */; };
+		9858790D1FB9C43B0025CF86 /* featureConfig.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9858790C1FB9C43B0025CF86 /* featureConfig.stencil */; };
 		DF5B09800953DFA6C029F033 /* Pods_SwiftFeatureConfigs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98644CA9E20A2131DFAE761 /* Pods_SwiftFeatureConfigs_Example.framework */; };
 		FB63274256F53F626DBFBD56 /* Pods_SwiftFeatureConfigs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6E64DDBE38F8E463DF8EDA /* Pods_SwiftFeatureConfigs_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,11 @@
 		858FE6B71D9090BC00F915DC /* TestFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFeatures.swift; sourceTree = "<group>"; };
 		858FE6BB1D90920900F915DC /* ExampleFeatureConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExampleFeatureConfigs.plist; sourceTree = "<group>"; };
 		8DC9F1711DF9E9E0DB1C633E /* Pods-SwiftFeatureConfigs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFeatureConfigs_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFeatureConfigs_Tests/Pods-SwiftFeatureConfigs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		985879081FB9BE350025CF86 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9858790A1FB9BE350025CF86 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		9858790C1FB9C43B0025CF86 /* featureConfig.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = featureConfig.stencil; sourceTree = "<group>"; };
+		98BDC36D1FB9B93A0081D78D /* featureConfigs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = featureConfigs.json; sourceTree = "<group>"; };
+		98BDC36E1FB9B93A0081D78D /* FeatureConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureConfigs.swift; sourceTree = "<group>"; };
 		A6DDC913A23724183C0CDA07 /* Pods-SwiftFeatureConfigs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftFeatureConfigs_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftFeatureConfigs_Tests/Pods-SwiftFeatureConfigs_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ACF63D784BEF4B64E0C06233 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AEC79C8263E5704DAF6E84CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -102,6 +109,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				98BDC0C31FB9B9390081D78D /* FeatureConfigParser */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SwiftFeatureConfigs */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -172,6 +180,26 @@
 				ACF63D784BEF4B64E0C06233 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		985876751FB9BE340025CF86 /* JSON-FeaturesParser */ = {
+			isa = PBXGroup;
+			children = (
+				985879081FB9BE350025CF86 /* main.swift */,
+				9858790A1FB9BE350025CF86 /* Package.swift */,
+			);
+			path = "JSON-FeaturesParser";
+			sourceTree = "<group>";
+		};
+		98BDC0C31FB9B9390081D78D /* FeatureConfigParser */ = {
+			isa = PBXGroup;
+			children = (
+				985876751FB9BE340025CF86 /* JSON-FeaturesParser */,
+				98BDC36D1FB9B93A0081D78D /* featureConfigs.json */,
+				9858790C1FB9C43B0025CF86 /* featureConfig.stencil */,
+				98BDC36E1FB9B93A0081D78D /* FeatureConfigs.swift */,
+			);
+			path = FeatureConfigParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +297,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				9858790D1FB9C43B0025CF86 /* featureConfig.stencil in Resources */,
 				8522EEDB1D87EF8700B42C4C /* FeaturesOverride.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9858790B1FB9C2070025CF86 /* FeatureConfigs.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				857A301C1D902BB100AF33FA /* ExampleFeatureConfigs.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

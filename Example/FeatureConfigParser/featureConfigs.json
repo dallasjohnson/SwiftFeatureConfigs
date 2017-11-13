@@ -1,0 +1,64 @@
+{
+    "configCollectionName":"MyFeatures",
+    "features":[
+                {
+                "type":"Bool",
+                "name":"isaEnabled",
+                "key":"isaEnabledKey",
+                "default":"false",
+                "doc":"Set true if ISAs should be visible in the app",
+                },
+                {
+                "type":"Bool",
+                "name":"navigationBarIsVisible",
+                "doc":"Set true if the main navigationBar should be visible",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled101",
+                "key":"otherThingEnabledKey102",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled2",
+                "key":"otherThingEnabledKey2",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled3",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled4",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled5",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled6",
+                "default":"true",
+                },{
+                "type":"Bool",
+                "name":"otherThingEnabled7",
+                "default":"true",
+                },
+                {
+                "type":"Float",
+                "name":"specialFloatValue",
+                "default":"12.4",
+                },
+                {
+                "type":"Int",
+                "name":"numberOfCellsToDisplaySomeWhere",
+                "default":"12",
+                },
+                {
+                "type":"String",
+                "name":"titleString",
+                "key":"titleStringKey",
+                "default":"My Default title",
+                }
+                ]
+}
