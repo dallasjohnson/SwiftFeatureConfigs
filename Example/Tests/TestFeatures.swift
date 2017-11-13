@@ -31,7 +31,7 @@ class TestFeatures: SwiftFeatureConfigs {
     }
 
     @objc var stringFeaturePreventPersisting: String {
-        return config(defaultValue: "default message should not persisted", persistableOnDevice: false)
+        return config(defaultValue: "default message should not persisted")
     }
 }
 

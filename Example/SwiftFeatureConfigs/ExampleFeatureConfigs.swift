@@ -15,15 +15,15 @@ class ExampleFeatureConfigs: SwiftFeatureConfigs {
     
     
     var detailsViewEnabled: Bool {
-        return config(defaultValue: true, persistableOnDevice: true)
+        return config(defaultValue: true)
     }
     
     var numberOfCellsToDisplay: Int {
-        return config(defaultValue: 12, persistableOnDevice: true)
+        return config(defaultValue: 12)
     }
     
     var mainViewTitle: String {
-        return config(defaultValue: "SampleTitle", persistableOnDevice: false)
+        return config(defaultValue: "SampleTitle")
     }
     
 }

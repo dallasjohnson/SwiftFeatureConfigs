@@ -30,14 +30,12 @@ extension URL {
 //This is required because the FeatureConfig generics and cannot be added to a collection with a generic type.
 protocol ConfigCollectableType {
     var key: String { get }
-    var persistableOnDevice: Bool { get }
 }
 
 /// A Simple struct to hold a config including a key to access it's value, default value and whether it should be persisted.
 struct FeatureConfig<T>: ConfigCollectableType {
     let key: String
     let defaultValue: T
-    let persistableOnDevice: Bool
 }
 
 open class SwiftFeatureConfigs: NSObject {
@@ -68,29 +66,27 @@ open class SwiftFeatureConfigs: NSObject {
      ````
      
      var someRandomFeature: Bool {
-     return config(defaultValue: false, persistableOnDevice: false)
+     return config(defaultValue: false)
      }
      ````
      
      - parameter key:          string used as a key in the override configs, in memory configs and user defaults persisted configs.
      - parameter defaultValue: default value if the override, in memory or persisted features do not contain a valid value for the given key.
-     - parameter persistableOnDevice: To prevent a config from being persisted onto the device this parameter should be set to false. This is useful for a feature that should always be fetched from the network and should fall back to the config's default rather than the last inMemory configs that were persisted.
-     
+
      - returns: the found value
      
      The value returned will be retrieved from sources in the following order:
      
      1. Overriden feature configs as loaded from a plist named "Features.plist" in the current bundle.
      2. In memory configs as loaded by `loadInMemoryFeatures()`
-     3. Persisted configs saved in the NSUserDefaults under key derived from the current class "'ClassName'__defaults_key_.key"
-     4. The default value for the given config
+     3. The default value for the given config
      */
-    public func config<T>(_ key: String = #function, defaultValue: T, persistableOnDevice: Bool = true) -> T {
+    public func config<T>(_ key: String = #function, defaultValue: T) -> T {
         let config: FeatureConfig<T>
         if let foundConfig = configsCollection[key] as? FeatureConfig<T> {
             config = foundConfig
         } else {
-            let lazilyCreatedConfig = FeatureConfig(key: key, defaultValue: defaultValue, persistableOnDevice: persistableOnDevice)
+            let lazilyCreatedConfig = FeatureConfig(key: key, defaultValue: defaultValue)
             configsCollection[key] = lazilyCreatedConfig
             config = lazilyCreatedConfig
         }
@@ -101,7 +97,6 @@ open class SwiftFeatureConfigs: NSObject {
         let key = config.key
         return overrideFeatureConfigs[key] as? T ??
             inMemoryFeatureConfigs?[key] as? T ??
-            persistedFeatureConfigs?[key] as? T ??
             config.defaultValue
     }
 
@@ -118,7 +113,7 @@ and they will mapped feature configs with the same keys
      - parameter rawConfigs: dictionary of features
      */
     public func loadInMemoryFeatures(_ configs: ConfigsValueCollection) {
-        inMemoryFeatureConfigs = configs
+          inMemoryFeatureConfigs = configs
     }
     
     /**
@@ -128,41 +123,3 @@ and they will mapped feature configs with the same keys
         inMemoryFeatureConfigs = nil
     }
  }
-
-extension SwiftFeatureConfigs {
-
-    /// Key used to store in the UserDefaults
-    fileprivate var featureConfigsUserDefaultsKey: String {
-        return "\(type(of: self))_defaults_key_"
-    }
-
-    /// User defaults copy of the configs as set via persit method
-    fileprivate var persistedFeatureConfigs: ConfigsValueCollection? {
-        return UserDefaults.standard.dictionary(forKey: self.featureConfigsUserDefaultsKey)
-    }
-
-    /**
-     Persist the in memory feature configs for later offline use. These will be saved in the UserDefaults using in a dictionary under the key "'ClassName'_defaults_key_"
-     */
-    public func persist() {
-        guard var features = inMemoryFeatureConfigs else { return print("No features loaded yet to persist") }
-
-        //seed the configs list based on the currently loaded inMemoryConfigs so the persistable flag can be read.
-        for (key, _) in features {
-            _ = perform(NSSelectorFromString(key))
-        }
-
-        for (key, config) in configsCollection where config.persistableOnDevice == false {
-            features.removeValue(forKey: key)
-        }
-        UserDefaults.standard.set(features, forKey: self.featureConfigsUserDefaultsKey)
-    }
-
-    /**
-     Deletes the persisted configs from the NSUserDefaults
-     */
-    public func clearPersistedConfigs() {
-        UserDefaults.standard.set(nil, forKey: self.featureConfigsUserDefaultsKey)
-    }
-}
-

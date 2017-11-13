@@ -24,13 +24,13 @@ class FeatureConfigsTestsWithOverride: XCTestCase {
         _ = OtherTestFeatures(featuresLocalFileURL: otherURL)
         
         testFeaturesWithOverride.loadInMemoryFeatures(["someOtherFeature" : 123])
-        testFeaturesWithOverride.clearPersistedConfigs()
+//        testFeaturesWithOverride.clearPersistedConfigs()
     }
 
     override func tearDown() {
         super.tearDown()
         testFeaturesWithOverride.clearInMemoryConfigs()
-        testFeaturesWithOverride.clearPersistedConfigs()
+//        testFeaturesWithOverride.clearPersistedConfigs()
     }
 
     func testBoolFeatureSet() {

@@ -50,7 +50,6 @@ extension ViewController {
     
     //When tapped the configs that can be persisted will be persisted in the UserDefaults and loaded in the future.
     @IBAction func persist() {
-        ExampleFeatureConfigs.sharedInstance.persist()
-        
+
     }
 }
