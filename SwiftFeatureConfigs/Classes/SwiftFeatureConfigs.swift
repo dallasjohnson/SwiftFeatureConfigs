@@ -42,11 +42,6 @@ struct FeatureConfig<T>: ConfigCollectableType {
 
 open class SwiftFeatureConfigs: NSObject {
 
-/// Key used to store in the UserDefaults
-    fileprivate var featureConfigsUserDefaultsKey: String {
-        return "\(type(of: self))_defaults_key_"
-    }
-
 /// URL for the local PList file to override the settings. (for QA or developer)
     fileprivate static var featuresConfigsLocalPlistFileURL: URL?
 
@@ -61,11 +56,6 @@ open class SwiftFeatureConfigs: NSObject {
 
 /// In memory configs as loaded at runtime from server or other source
     fileprivate var inMemoryFeatureConfigs: ConfigsValueCollection?
-
-    /// User defaults copy of the configs as set via persit method
-    fileprivate var persistedFeatureConfigs: ConfigsValueCollection? {
-        return UserDefaults.standard.dictionary(forKey: self.featureConfigsUserDefaultsKey)
-    }
 
     public init(featuresLocalFileURL: URL? = nil) {
         type(of: self).featuresConfigsLocalPlistFileURL = featuresLocalFileURL
@@ -137,7 +127,20 @@ and they will mapped feature configs with the same keys
     public func clearInMemoryConfigs() {
         inMemoryFeatureConfigs = nil
     }
-    
+ }
+
+extension SwiftFeatureConfigs {
+
+    /// Key used to store in the UserDefaults
+    fileprivate var featureConfigsUserDefaultsKey: String {
+        return "\(type(of: self))_defaults_key_"
+    }
+
+    /// User defaults copy of the configs as set via persit method
+    fileprivate var persistedFeatureConfigs: ConfigsValueCollection? {
+        return UserDefaults.standard.dictionary(forKey: self.featureConfigsUserDefaultsKey)
+    }
+
     /**
      Persist the in memory feature configs for later offline use. These will be saved in the UserDefaults using in a dictionary under the key "'ClassName'_defaults_key_"
      */
@@ -154,7 +157,7 @@ and they will mapped feature configs with the same keys
         }
         UserDefaults.standard.set(features, forKey: self.featureConfigsUserDefaultsKey)
     }
-    
+
     /**
      Deletes the persisted configs from the NSUserDefaults
      */
@@ -162,3 +165,4 @@ and they will mapped feature configs with the same keys
         UserDefaults.standard.set(nil, forKey: self.featureConfigsUserDefaultsKey)
     }
 }
+
