@@ -75,7 +75,7 @@ class FeatureConfigsTests: XCTestCase {
     }
 
     func testLoadAndPersistForPersistable() {
-        //Seed and save in NSUserDefaults
+        //Seed and save in UserDefaults
         testFeatures.loadInMemoryFeatures(["stringFeature": "set message", "stringFeaturePreventPersisting": "setNonPersistingMessage"])
         testFeatures.persist()
 

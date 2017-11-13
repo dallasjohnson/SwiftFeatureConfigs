@@ -146,7 +146,7 @@ and they will mapped feature configs with the same keys
 
         //seed the configs list based on the currently loaded inMemoryConfigs so the persistable flag can be read.
         for (key, _) in features {
-            _ = perform(Selector(key))
+            _ = perform(NSSelectorFromString(key))
         }
 
         for (key, config) in configsCollection where config.persistableOnDevice == false {

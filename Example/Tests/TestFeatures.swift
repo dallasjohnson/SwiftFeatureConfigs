@@ -14,23 +14,24 @@ class OtherTestFeatures: SwiftFeatureConfigs {
 
 class TestFeatures: SwiftFeatureConfigs {
 
-     var boolFeature: Bool {
+     @objc var boolFeature: Bool {
         return config(defaultValue: true)
     }
 
-    var stringFeature: String {
+    @objc var stringFeature: String {
         return config(defaultValue: "default message")
     }
-    
-     var intFeature: Int {
+
+     @objc var intFeature: Int {
         return config(defaultValue: 11)
     }
 
-     var doubleFeature: Double {
+     @objc var doubleFeature: Double {
         return config(defaultValue: 113.45)
     }
 
-    var stringFeaturePreventPersisting: String {
+    @objc var stringFeaturePreventPersisting: String {
         return config(defaultValue: "default message should not persisted", persistableOnDevice: false)
     }
 }
+
